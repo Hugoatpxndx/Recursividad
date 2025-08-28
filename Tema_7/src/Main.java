@@ -2,6 +2,19 @@ import java.util.Scanner;
 
 public class Main {
 
+    public static String pedirCadena(Scanner scanner) {
+        scanner.nextLine(); // Limpiar el buffer primero
+        System.out.print("Ingrese una cadena de texto para invertir: ");
+        String cadena = scanner.nextLine();
+
+        if (cadena.trim().isEmpty()) {
+            System.out.println("No ingresó nada. Por favor, intente de nuevo.");
+            return pedirCadena(scanner); // Llamada recursiva si la cadena está vacía
+        } else {
+            return cadena; // Caso base: si la cadena no está vacía, la devuelve
+        }
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int option;
@@ -12,7 +25,8 @@ public class Main {
             System.out.println("1. Calcular Factorial");
             System.out.println("2. Calcular Fibonacci");
             System.out.println("3. Sumar dígitos de un número");
-            System.out.println("4. Salir");
+            System.out.println("4. Invertir una cadena de texto");
+            System.out.println("5. Salir");
             System.out.print("Seleccione una opción: ");
 
             try {
@@ -47,8 +61,11 @@ public class Main {
                         }
                         break;
                     case 4:
-                        System.out.println("Saliendo del programa. ¡Hasta luego!");
+                        String cadena = pedirCadena(scanner);
+                        System.out.println("La cadena invertida es: " + Recursion.InvertirCadena(cadena));
                         break;
+                    case 5:
+                        System.out.println("Saliendo del programa");
                     default:
                         System.out.println("Opción no válida. Por favor, intente de nuevo.");
                         break;
@@ -59,7 +76,7 @@ public class Main {
                 option = 0;
             }
             System.out.println();
-        } while (option != 4);
+        } while (option != 5);
 
         scanner.close();
     }

@@ -43,4 +43,11 @@ public class Recursion {
             return (n % 10) + sumarDigitos(n / 10);
         }
     }
+    public static String InvertirCadena(String cadena) {
+        if (cadena.isEmpty()) {
+            return "";
+        } else {
+            return InvertirCadena(cadena.substring(1)) + cadena.charAt(0);
+        }
+    }
 }
