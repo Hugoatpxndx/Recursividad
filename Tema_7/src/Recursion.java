@@ -9,10 +9,9 @@ public class Recursion {
         if (n < 0) {
             throw new IllegalArgumentException("El factorial no está definido para números negativos.");
         }
-        if (n <= 1) { // Caso base
+        if (n <= 1) {
             return 1;
         } else {
-            // Caso recursivo
             return n * factorial(n - 1);
         }
     }
@@ -26,10 +25,9 @@ public class Recursion {
         if (n < 0) {
             throw new IllegalArgumentException("La secuencia de Fibonacci no está definida para números negativos.");
         }
-        if (n <= 1) { // Caso base
+        if (n <= 1) {
             return n;
         } else {
-            // Caso recursivo
             return fibonacci(n - 1) + fibonacci(n - 2);
         }
     }
@@ -49,5 +47,27 @@ public class Recursion {
         } else {
             return InvertirCadena(cadena.substring(1)) + cadena.charAt(0);
         }
+    }
+
+    public static String contarVocales(String cadena) {
+        int cantidad = contarVocalesRecursivo(cadena.toLowerCase(), 0);
+        return "La cadena '" + cadena + "' tiene " + cantidad + " vocales";
+    }
+
+    private static int contarVocalesRecursivo(String cadena, int index) {
+        if (index >= cadena.length()) {
+            return 0;
+        }
+
+        char caracter = cadena.charAt(index);
+        int contador = 0;
+
+        if (caracter == 'a' || caracter == 'e' || caracter == 'i' ||
+                caracter == 'o' || caracter == 'u' || caracter == 'á' ||
+                caracter == 'é' || caracter == 'í' || caracter == 'ó' ||
+                caracter == 'ú' || caracter == 'ü') {
+            contador = 1;
+        }
+        return contador + contarVocalesRecursivo(cadena, index + 1);
     }
 }

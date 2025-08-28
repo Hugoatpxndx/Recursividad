@@ -3,15 +3,15 @@ import java.util.Scanner;
 public class Main {
 
     public static String pedirCadena(Scanner scanner) {
-        scanner.nextLine(); // Limpiar el buffer primero
-        System.out.print("Ingrese una cadena de texto para invertir: ");
+        scanner.nextLine();
+        System.out.print("Ingrese una cadena: ");
         String cadena = scanner.nextLine();
 
         if (cadena.trim().isEmpty()) {
             System.out.println("No ingresó nada. Por favor, intente de nuevo.");
-            return pedirCadena(scanner); // Llamada recursiva si la cadena está vacía
+            return pedirCadena(scanner);
         } else {
-            return cadena; // Caso base: si la cadena no está vacía, la devuelve
+            return cadena;
         }
     }
 
@@ -26,7 +26,8 @@ public class Main {
             System.out.println("2. Calcular Fibonacci");
             System.out.println("3. Sumar dígitos de un número");
             System.out.println("4. Invertir una cadena de texto");
-            System.out.println("5. Salir");
+            System.out.println("5. Contar vocales en una cadena");
+            System.out.println("6. Salir");
             System.out.print("Seleccione una opción: ");
 
             try {
@@ -65,19 +66,23 @@ public class Main {
                         System.out.println("La cadena invertida es: " + Recursion.InvertirCadena(cadena));
                         break;
                     case 5:
-                        System.out.println("Saliendo del programa");
+                        String cadena5 = pedirCadena(scanner);
+                        System.out.println(Recursion.contarVocales(cadena5));
+                        break;
+                    case 6:
+                        System.out.println("Saliendo del programa...");
+                        break;
                     default:
-                        System.out.println("Opción no válida. Por favor, intente de nuevo.");
+                        System.out.println("Opción no válida. Intenta otra vez.");
                         break;
                 }
             } catch (java.util.InputMismatchException e) {
-                System.out.println("Entrada no válida. Por favor, ingrese un número.");
+                System.out.println("Entrada no válida. Ingresa nuevamente.");
                 scanner.next();
                 option = 0;
             }
             System.out.println();
-        } while (option != 5);
-
+        } while (option != 6);
         scanner.close();
     }
 }
